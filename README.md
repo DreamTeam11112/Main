@@ -8,11 +8,16 @@ REST API антифрод-системы на `Spring Boot 3` и `Java 21`.
 - сохраняет транзакцию, решение и сработавшие триггеры;
 - отдаёт результат проверки и историю операций.
 
+<<<<<<< HEAD
 ## Что реализовано
+=======
+## Ручки
+>>>>>>> 1c298e111ab0389d9e4ea729a90c2ac8b3245b4b
 
 - `POST /api/v1/transactions/check` для проверки транзакции
 - `GET /api/v1/transactions/{transactionId}` для получения решения по транзакции
 - `GET /api/v1/transactions?page=0&size=10` для списка транзакций
+<<<<<<< HEAD
 - `GET /api/v1/rules` для списка правил
 - `GET /api/v1/rules/{ruleCode}` для чтения одного правила
 - `PUT /api/v1/rules/{ruleCode}` для изменения веса, порога и активности правила
@@ -22,6 +27,16 @@ REST API антифрод-системы на `Spring Boot 3` и `Java 21`.
 ## Модель скоринга
 
 Скоринг сейчас построен на базовых антифрод-признаках и статистике по истории клиента.
+=======
+- `GET /api/v1/rules` для получения списка правил
+- `GET /api/v1/rules/{ruleCode}` для чтения одного правила
+- `PUT /api/v1/rules/{ruleCode}` для изменения веса, порога и активности правила
+
+
+## Модель скоринга
+
+Скоринг построен на базовых антифрод-признаках и статистике по истории клиента.
+>>>>>>> 1c298e111ab0389d9e4ea729a90c2ac8b3245b4b
 
 Используются:
 - большие суммы: `HIGH_AMOUNT`, `VERY_HIGH_AMOUNT`
@@ -58,6 +73,7 @@ REST API антифрод-системы на `Spring Boot 3` и `Java 21`.
 
 ## Форматы данных
 
+<<<<<<< HEAD
 ### Запрос на проверку транзакции
 
 ```json
@@ -152,6 +168,9 @@ REST API антифрод-системы на `Spring Boot 3` и `Java 21`.
   "field": "amount"
 }
 ```
+=======
+
+>>>>>>> 1c298e111ab0389d9e4ea729a90c2ac8b3245b4b
 
 ## Ручки
 
@@ -196,6 +215,7 @@ REST API антифрод-системы на `Spring Boot 3` и `Java 21`.
 - `Java 21`
 - `Maven 3.9+`
 
+<<<<<<< HEAD
 ### Быстрый локальный запуск на H2
 
 По умолчанию проект стартует на встроенной in-memory БД `H2`.
@@ -203,6 +223,9 @@ REST API антифрод-системы на `Spring Boot 3` и `Java 21`.
 ```bash
 mvn spring-boot:run
 ```
+=======
+
+>>>>>>> 1c298e111ab0389d9e4ea729a90c2ac8b3245b4b
 
 После запуска:
 - API: `http://localhost:8080`
@@ -213,6 +236,7 @@ mvn spring-boot:run
 - user: `sa`
 - password: пустой
 
+<<<<<<< HEAD
 ### Запуск с PostgreSQL
 
 ```bash
@@ -228,6 +252,8 @@ Flyway сам создаст схему и стартовые правила.
 После запуска с PostgreSQL Swagger тоже будет доступен:
 - `http://localhost:8080/swagger-ui.html`
 - `http://localhost:8080/v3/api-docs`
+=======
+>>>>>>> 1c298e111ab0389d9e4ea729a90c2ac8b3245b4b
 
 ### Запуск в Docker Compose
 
@@ -258,6 +284,7 @@ docker compose down
 docker compose down -v
 ```
 
+<<<<<<< HEAD
 ### Сборка
 
 ```bash
@@ -269,6 +296,16 @@ mvn clean package
 ```bash
 mvn clean test
 ```
+=======
+
+Разовый запуск генератора при уже поднятом backend:
+
+```bash
+docker compose run --rm generator --scenario all --count 35
+```
+
+`
+>>>>>>> 1c298e111ab0389d9e4ea729a90c2ac8b3245b4b
 
 ## Примеры запросов
 
@@ -314,10 +351,13 @@ curl -X PUT http://localhost:8080/api/v1/rules/HIGH_AMOUNT \
 
 ## База данных
 
+<<<<<<< HEAD
 Миграция находится в:
 
 - `src/main/resources/db/migration/V1__init_schema.sql`
 
+=======
+>>>>>>> 1c298e111ab0389d9e4ea729a90c2ac8b3245b4b
 Создаются таблицы:
 - `transactions`
 - `fraud_decisions`
@@ -325,6 +365,7 @@ curl -X PUT http://localhost:8080/api/v1/rules/HIGH_AMOUNT \
 - `rule_configs`
 - `customer_profiles`
 
+<<<<<<< HEAD
 ## Тесты
 
 Интеграционные тесты API покрывают:
@@ -333,6 +374,8 @@ curl -X PUT http://localhost:8080/api/v1/rules/HIGH_AMOUNT \
 - чтение транзакции
 - пагинацию списка транзакций
 - чтение и обновление правил
+=======
+>>>>>>> 1c298e111ab0389d9e4ea729a90c2ac8b3245b4b
 
 ## Как устроен код
 
@@ -351,6 +394,7 @@ curl -X PUT http://localhost:8080/api/v1/rules/HIGH_AMOUNT \
 
 Правила хранятся в таблице `rule_configs`, поэтому их можно читать и менять через API без перекомпиляции приложения.
 
+<<<<<<< HEAD
 ## Актуальный запуск проекта
 
 Сейчас основной рекомендуемый способ запуска для разработки и демо: `Docker Compose`.
@@ -427,3 +471,5 @@ docker compose down -v
 - отдельной инструкции по запуску backend вместе с `PostgreSQL` для демонстрационного стенда;
 - набора тестовых данных и/или сидов для воспроизводимой демонстрации антифрод-срабатываний;
 - базовых нефункциональных доработок для demo-MVP: логирование, обработка ошибок на уровне интеграции и минимальный мониторинг состояния сервиса.
+=======
+>>>>>>> 1c298e111ab0389d9e4ea729a90c2ac8b3245b4b
