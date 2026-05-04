@@ -137,20 +137,6 @@ Backend внутри compose подключается к PostgreSQL автома
 docker compose down
 ```
 
-Остановка с удалением volume PostgreSQL:
-
-```bash
-docker compose down -v
-```
-
-
-Разовый запуск генератора при уже поднятом backend:
-
-```bash
-docker compose run --rm generator --scenario all --count 35
-```
-
-`
 
 ## Примеры запросов
 
