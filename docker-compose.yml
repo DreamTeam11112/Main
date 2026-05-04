@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: antifraud-postgres
+    environment:
+      POSTGRES_DB: antifraud
+      POSTGRES_USER: antifraud
+      POSTGRES_PASSWORD: antifraud
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U antifraud -d antifraud"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: antifraud-backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/antifraud
+      DB_USERNAME: antifraud
+      DB_PASSWORD: antifraud
+      DB_DRIVER: org.postgresql.Driver
+    ports:
+      - "8081:8080"
+
+volumes:
+  postgres_data:
